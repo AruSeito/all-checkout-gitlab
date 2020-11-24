@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/AruSeito/all-checkout-gitlab#readme",
   "dependencies": {
-    "axios": "^0.21.0"
+    "axios": "^0.21.0",
+    "inquirer": "^7.3.3"
   }
 }
