@@ -4,4 +4,5 @@ exports.CONFIG = {
   projectId: '',
   sourceBranch: '',
   newBranch: '',
+  projectInfo: []
 }
