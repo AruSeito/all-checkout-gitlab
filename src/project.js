@@ -1,5 +1,6 @@
 const CONFIG = require('./config').CONFIG;
 const axios = require('axios')
+const chalk = require('chalk');
 
 
 //获取prject信息
@@ -19,6 +20,6 @@ const setProjectInfo = async () => {
 const showProjectInfo = () => {
   const { projectInfo } = CONFIG;
   projectInfo.forEach((value, index) => {
-    console.log(`project ID:${value.id}   project Name:${value.name}    project repo:${value.repo}`);
+    console.log(`${chalk.blue('id')}:${chalk.cyan(value.id)} \t ${chalk.blue('name')}:${chalk.cyan(value.name)} \t ${chalk.blue('repo')}:${chalk.cyan(value.repo)}`)
   })
 }
