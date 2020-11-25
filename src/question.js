@@ -2,6 +2,7 @@
 const inquirer = require('inquirer');
 const CONFIG = require('./config').CONFIG;
 
+// 输入gitlab地址
 const getAddress = () => {
   return inquirer.prompt({
     type: 'input',
@@ -12,6 +13,7 @@ const getAddress = () => {
   })
 }
 
+// 输入access token
 const getToken = () => {
   return inquirer.prompt({
     type: 'input',
@@ -22,6 +24,7 @@ const getToken = () => {
   })
 }
 
+// 输入project Id
 const getProjectId = () => {
   return inquirer.prompt({
     type: 'input',
@@ -31,6 +34,8 @@ const getProjectId = () => {
     CONFIG.token = ans.projectId;
   })
 }
+
+//输入源分支名
 const getSourceBranch = () => {
   return inquirer.prompt({
     type: 'input',
@@ -40,6 +45,8 @@ const getSourceBranch = () => {
     CONFIG.token = ans.sourceBranch;
   })
 }
+
+//输入新分支名
 const getNewBranch = () => {
   return inquirer.prompt({
     type: 'input',
