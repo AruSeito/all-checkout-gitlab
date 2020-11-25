@@ -12,14 +12,14 @@ const getProjectInfo = () => {
 const setProjectInfo = async () => {
   const { data } = await getProjectInfo();
   data.map((value) => {
-    CONFIG.projectInfo.push({ id: value.id, name: value.name_with_namespace, repo: value.http_url_to_repo });
+    CONFIG.projectInfo.push({ id: value.id, name: value.name, repo: value.http_url_to_repo });
   })
 }
 
 //展示project信息
 const showProjectInfo = () => {
   const { projectInfo } = CONFIG;
-  projectInfo.forEach((value, index) => {
+  projectInfo.forEach((value) => {
     console.log(`${chalk.blue('id')}:${chalk.cyan(value.id)} \t ${chalk.blue('name')}:${chalk.cyan(value.name)} \t ${chalk.blue('repo')}:${chalk.cyan(value.repo)}`)
   })
 }
