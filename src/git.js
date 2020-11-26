@@ -21,18 +21,13 @@ const runCMD = (cmd) => {
   })
 }
 
-const openFolder = (name) => {
-  return runCMD(`cd ${name}`);
-}
 
-const checkoutBranch = () => {
-  return runCMD(`git checkout ${CONFIG.sourceBranch}`);
+const useGit = async () => {
+  console.log(CONFIG.projectId);
+  for (let i = 0; i < CONFIG.projectId.length; i++) {
+    const { name, repo } = CONFIG.projectInfo[i]
+    await cloneRepo(repo, name);
+    await runCMD(`cd ${name} && git checkout ${CONFIG.sourceBranch} && git checkout -b ${CONFIG.newBranch} && git push --set-upstream origin ${CONFIG.newBranch}`);
+  }
 }
-
-const newBranch = () => {
-  return runCMD(`git checkout -b ${CONFIG.newBranch}`);
-}
-
-const pushRemote = () => {
-  return runCMD(`git push --set-upstream origin ${CONFIG.newBranch}`)
-}
+exports.useGit = useGit;
