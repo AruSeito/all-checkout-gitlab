@@ -7,7 +7,8 @@ const getAddress = () => {
   return inquirer.prompt({
     type: 'input',
     name: 'address',
-    message: '请输入gitlab地址'
+    message: '请输入gitlab地址',
+    when: !CONFIG.address
   }).then((ans) => {
     CONFIG.address = ans.address;
   })
@@ -18,7 +19,8 @@ const getToken = () => {
   return inquirer.prompt({
     type: 'input',
     name: 'token',
-    message: '请输入access token'
+    message: '请输入access token',
+    when: !CONFIG.token
   }).then(ans => {
     CONFIG.token = ans.token;
   })
@@ -29,7 +31,8 @@ const getProjectId = () => {
   return inquirer.prompt({
     type: 'input',
     name: 'projectId',
-    message: '请输入Project Id'
+    message: '请输入Project Id',
+    when: !CONFIG.projectId
   }).then(ans => {
     CONFIG.token = ans.projectId;
   })
@@ -40,7 +43,8 @@ const getSourceBranch = () => {
   return inquirer.prompt({
     type: 'input',
     name: 'sourceBranch',
-    message: '请输入Source Branch'
+    message: '请输入Source Branch',
+    when: !CONFIG.sourceBranch
   }).then(ans => {
     CONFIG.token = ans.sourceBranch;
   })
@@ -51,7 +55,8 @@ const getNewBranch = () => {
   return inquirer.prompt({
     type: 'input',
     name: 'newBranch',
-    message: '请输入New Branch'
+    message: '请输入New Branch',
+    when: !CONFIG.newBranch
   }).then(ans => {
     CONFIG.token = ans.newBranch;
   })
