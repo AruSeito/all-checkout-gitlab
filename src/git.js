@@ -1,12 +1,11 @@
-const download = require('download-git-repo')
+const CONFIG = require('./config').CONFIG
+const gitClone = require('git-clone')
 const childProcess = require('child_process');
 
 
-const downloadRepo = (repo, name, project = '') => {
-  let finnalName = name;
-  if (!!project) finnalName = `${name}_${project}`;
+const cloneRepo = (repo, name) => {
   return new Promise((resolve, reject) => {
-    download(`direct:${repo}`, finnalName, { clone: true }, (err) => {
+    gitClone(repo, name, (err) => {
       if (!!err) reject(err);
       resolve('download success');
     })
@@ -22,20 +21,18 @@ const runCMD = (cmd) => {
   })
 }
 
-const openFolder = (name, project = '') => {
-  let finnalName = name;
-  if (!!project) finnalName = `${name}_${project}`;
-  return runCMD(`cd ${finnalName}`);
+const openFolder = (name) => {
+  return runCMD(`cd ${name}`);
 }
 
-const checkoutBranch = (source) => {
-  return runCMD(`git checkout ${source}`);
+const checkoutBranch = () => {
+  return runCMD(`git checkout ${CONFIG.sourceBranch}`);
 }
 
-const newBranch = (newBranchName) => {
-  return runCMD(`git checkout -b ${newBranchName}`);
+const newBranch = () => {
+  return runCMD(`git checkout -b ${CONFIG.newBranch}`);
 }
 
-const pushRemote = (newBranchName) => {
-  return runCMD(`git push --set-upstream origin ${newBranchName}`)
+const pushRemote = () => {
+  return runCMD(`git push --set-upstream origin ${CONFIG.newBranch}`)
 }
