@@ -1,2 +1,11 @@
 #!/usr/bin/env node
-console.log(233333)
+
+const { userInput } = require("../src/question");
+const { useGit } = require('../src/git')
+
+const init = async () => {
+  await userInput();
+  await useGit();
+}
+
+init();
