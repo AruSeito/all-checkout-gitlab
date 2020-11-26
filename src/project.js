@@ -11,15 +11,21 @@ const getProjectInfo = () => {
 //设置project信息
 const setProjectInfo = async () => {
   const { data } = await getProjectInfo();
-  data.map((value) => {
-    CONFIG.projectInfo.push({ id: value.id, name: value.name, repo: value.http_url_to_repo });
+  data.map((value, index) => {
+    CONFIG.projectInfo.push({ id: index, name: value.name, repo: value.http_url_to_repo, pathName: value.path_with_namespace });
   })
 }
 
 //展示project信息
-const showProjectInfo = () => {
+const showProjectInfo = async () => {
+  await setProjectInfo();
   const { projectInfo } = CONFIG;
-  projectInfo.forEach((value) => {
-    console.log(`${chalk.blue('id')}:${chalk.cyan(value.id)} \t ${chalk.blue('name')}:${chalk.cyan(value.name)} \t ${chalk.blue('repo')}:${chalk.cyan(value.repo)}`)
+  projectInfo.forEach((value, index) => {
+    console.log(`${chalk.blue('id')}:${chalk.cyan(index)} \t ${chalk.blue('name')}:${chalk.cyan(value.name)} \t ${chalk.blue('repo')}:${chalk.cyan(value.repo)}`)
   })
 }
+
+exports.showProjectInfo = showProjectInfo
+
+
+
