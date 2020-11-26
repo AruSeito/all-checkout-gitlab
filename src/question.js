@@ -1,5 +1,6 @@
 'use strict';
 const inquirer = require('inquirer');
+const { showProjectInfo } = require('./project');
 const CONFIG = require('./config').CONFIG;
 
 // 输入gitlab地址
@@ -10,7 +11,7 @@ const getAddress = () => {
     message: '请输入gitlab地址',
     when: !CONFIG.address
   }).then((ans) => {
-    CONFIG.address = ans.address;
+    if (!CONFIG.address) CONFIG.address = ans.address;
   })
 }
 
@@ -22,7 +23,7 @@ const getToken = () => {
     message: '请输入access token',
     when: !CONFIG.token
   }).then(ans => {
-    CONFIG.token = ans.token;
+    if (!CONFIG.token) CONFIG.token = ans.token;
   })
 }
 
@@ -34,7 +35,7 @@ const getProjectId = () => {
     message: '请输入Project Id',
     when: !CONFIG.projectId
   }).then(ans => {
-    CONFIG.token = ans.projectId;
+    if (!CONFIG.projectId) CONFIG.projectId = ans.projectId.split(',');
   })
 }
 
@@ -46,7 +47,7 @@ const getSourceBranch = () => {
     message: '请输入Source Branch',
     when: !CONFIG.sourceBranch
   }).then(ans => {
-    CONFIG.token = ans.sourceBranch;
+    if (!CONFIG.sourceBranch) CONFIG.sourceBranch = ans.sourceBranch;
   })
 }
 
@@ -58,6 +59,18 @@ const getNewBranch = () => {
     message: '请输入New Branch',
     when: !CONFIG.newBranch
   }).then(ans => {
-    CONFIG.token = ans.newBranch;
+    if (!CONFIG.newBranch) CONFIG.newBranch = ans.newBranch;
   })
 }
+
+
+const userInput = async () => {
+  await getAddress();
+  await getToken();
+  await showProjectInfo();
+  await getProjectId();
+  await getSourceBranch();
+  await getNewBranch();
+}
+
+exports.userInput = userInput
