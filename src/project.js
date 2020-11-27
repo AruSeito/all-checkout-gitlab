@@ -5,7 +5,7 @@ const chalk = require('chalk');
 
 //获取prject信息
 const getProjectInfo = () => {
-  return axios.get(`https://gitlab.${CONFIG.address}.com/api/v4/projects?private_token=${CONFIG.token}`)
+  return axios.get(`https://${CONFIG.address}/api/v4/projects?private_token=${CONFIG.token}`)
 }
 
 //设置project信息
