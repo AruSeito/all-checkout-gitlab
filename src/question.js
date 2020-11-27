@@ -9,6 +9,7 @@ const getAddress = () => {
     type: 'input',
     name: 'address',
     message: '请输入gitlab地址',
+    suffix: '(eg.:gitlab.example.com)',
     when: !CONFIG.address
   }).then((ans) => {
     if (!CONFIG.address) CONFIG.address = ans.address;
@@ -20,7 +21,7 @@ const getToken = () => {
   return inquirer.prompt({
     type: 'input',
     name: 'token',
-    message: '请输入access token',
+    message: '请输入private token',
     when: !CONFIG.token
   }).then(ans => {
     if (!CONFIG.token) CONFIG.token = ans.token;
@@ -33,6 +34,7 @@ const getProjectId = () => {
     type: 'input',
     name: 'projectId',
     message: '请输入Project Id',
+    suffix: '(eg.:1,2,3,4)',
     when: !CONFIG.projectId
   }).then(ans => {
     if (!CONFIG.projectId) CONFIG.projectId = ans.projectId.split(',');
@@ -45,9 +47,11 @@ const getSourceBranch = () => {
     type: 'input',
     name: 'sourceBranch',
     message: '请输入Source Branch',
-    when: !CONFIG.sourceBranch
+    when: !CONFIG.sourceBranch,
+    suffix: '(eg.:1,2,3,4,5)'
   }).then(ans => {
     if (!CONFIG.sourceBranch) CONFIG.sourceBranch = ans.sourceBranch;
+    showProjectInfo();
   })
 }
 
@@ -67,7 +71,6 @@ const getNewBranch = () => {
 const userInput = async () => {
   await getAddress();
   await getToken();
-  await showProjectInfo();
   await getProjectId();
   await getSourceBranch();
   await getNewBranch();
