@@ -2,6 +2,16 @@
 
 [开发记录](https://chenxiumiao.cn/fe/cli.html)
 
+## 如何安装
+
+```
+npm install all-checkout-gitlab
+```
+
+## 如何使用
+
+终端中输入`acbg`,后续按提示操作
+
 ## 待办清单
 
 - [ ] Typescript 重构
