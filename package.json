@@ -7,7 +7,7 @@
     "acbg": "bin/init.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npm run test is running",
     "test:CI": "npm run test:CI"
   },
   "repository": {
