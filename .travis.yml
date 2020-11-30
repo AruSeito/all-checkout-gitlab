@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+  - "12.13"
+
+stages:
+  - test
+
+jobs:
+  include:
+    - stage: test
+    script: 
+      - echo "test startd"
+      - num run test:CI
+      - echo "test end"
