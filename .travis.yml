@@ -1,14 +1,8 @@
 language: node_js
-node_js:
-  - "12.13"
 
-stages:
-  - test
-
-jobs:
-  include:
-    - stage: test
-    script: 
-      - echo "test startd"
-      - num run test:CI
-      - echo "test end"
+deploy:
+  provider: npm
+  email: "AruSeito@gmail.com"
+  api_key: "$NPM_TOKEN"
+  on:
+    branch: main
