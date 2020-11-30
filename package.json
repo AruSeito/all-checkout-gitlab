@@ -7,7 +7,7 @@
     "acbg": "bin/init.js"
   },
   "scripts": {
-    "test": "test is running",
+    "test": "echo \" ci run success \"",
     "test:CI": "npm run test:CI"
   },
   "repository": {
